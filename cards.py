@@ -66,12 +66,26 @@ class Card:
 class DeckOfCards:
     def __init__(self):
         self.list_of_cards = []
-    
+
+
+    def add_cards_from_csv(self):
+        with open('add_multiple_cards.csv', 'r') as adder:
+            reader = csv.reader(adder, delimeter=',')
+            for row in reader:
+                self.list_of_cards.append(Card(row[0], row[1], row[2]))
+
     def add_to_deck(self, card):
         self.list_of_cards.append(card)
 
-class HandOfCards():
-    pass
+    # TODO: add to deck than draw a hand on screen
+    def shuffle(self):
+        random.shuffle(self.list_of_cards)
 
+    def create_hand(self, start_number_cards: int):
+        self.start_hand = self.list_of_cards[:start_number_cards]
+
+    def draw_hand(self):
+        if len(self.start_hand) <= 7:
+            pass
 
 
